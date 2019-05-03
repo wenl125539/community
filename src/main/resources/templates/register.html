@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>wenl社区注册</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<form class="form-horizontal" method="post" action="user/register"> <!-- id="registerfrom"  enctype="multipart/form-data"-->
+    <div class="form-group">
+        <label class="col-sm-4 control-label">wenl社区注册</label>
+    </div>
+    <div class="form-group">
+        <label for="inputName" class="col-sm-2 control-label">账号</label>
+        <div class="col-sm-5">
+            <input type="username" name="username" class="form-control" id="inputName" placeholder="账号">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
+        <div class="col-sm-5">
+            <input type="password" name="password" class="form-control" id="inputPassword3" placeholder="密码">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="phone" class="col-sm-2 control-label">电话</label>
+        <div class="col-sm-5">
+            <input type="phone" name="phone" class="form-control" id="phone" placeholder="电话">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputEmail3" class="col-sm-2 control-label">邮箱</label>
+        <div class="col-sm-5">
+            <input type="email" name="email" class="form-control" id="inputEmail3" placeholder="Email">
+        </div>
+    </div>
+
+  <!--  <div class="form-group">
+        <label for="inputEmail3" class="col-sm-2 control-label">头像</label>
+        <div class="col-sm-5">
+            <input type="file" id="exampleInputFile">
+        </div>
+    </div>-->
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit"  class="btn btn-default" id="register">注册</button>
+        </div>
+    </div>
+</form>
+<script src="registerjs/jquery2.2.4.js"></script>
+
+<!--<script type="text/javascript">
+    /* $("#register").click(function(event) {
+        $.ajax({
+            type: "post",
+            url: "/user/register",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",//预期服务器返回的数据类型
+            data: $('#registerfrom').serialize(),
+            success: function (data) {
+                alert(data);
+            },
+            error:function () {
+                alert("AAA");
+            }
+        });
+    });*/
+    alert($('#registerfrom').serialize());
+</script>-->
+</body>
+</html>
