@@ -13,4 +13,6 @@ public interface UserMapper {
     int insertSelective(User record);
 
     List<User> selectAllUser();
+
+    int addHead(User user);
 }

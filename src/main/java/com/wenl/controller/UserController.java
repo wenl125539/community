@@ -6,14 +6,11 @@ import com.wenl.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.beans.factory.annotation.Value;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.util.ClassUtils;
-import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
-import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -37,7 +34,6 @@ public class UserController {
         User user = new User();
         user.setUsername(username);
         user.setPassword(password);
-        user.setHead("AA");
         user.setCreated(new Date());
         user.setUpdated(new Date());
         //查看是否储存成功 返回值为0 则保存失败
@@ -60,7 +56,7 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping(value = "/upload/{username}",method = {RequestMethod.POST},produces = "application/json;charset=UTF-8")
-    public Map<String,Object> upload(MultipartFile file,HttpServletRequest request,@PathVariable String username) throws IOException {
+    public Map<String,Object> upload(MultipartFile file,@PathVariable String username) throws IOException {
             Map<String,Object> map = new HashMap<>();
            if(file != null){
                //将文件转换为字节
@@ -75,6 +71,13 @@ public class UserController {
                //将字节写进文件中
                stream.write(bytes);
                stream.close();
+
+               //保存数据库
+               User user = new User();
+               user.setUsername(username);
+               user.setHead(path2);
+               userService.addHead(user);
+
                System.out.println("图片上传完毕，存储地址为："+path+"static/img/"+path2);
                map.put("msg","保存成功");
            }else{
@@ -82,6 +85,4 @@ public class UserController {
            }
             return map;
     }
-
-
 }
