@@ -24,5 +24,10 @@ public class UserServiceImpl  implements UserService {
         return userMapper.selectAllUser();
     }
 
+    @Override
+    public int addHead(User user) {
+        return userMapper.addHead(user);
+    }
+
 
 }
