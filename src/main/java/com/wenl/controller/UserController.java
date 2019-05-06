@@ -2,6 +2,7 @@ package com.wenl.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.wenl.pojo.User;
+import com.wenl.pojo.User2;
 import com.wenl.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.ClassUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
+import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -84,5 +88,46 @@ public class UserController {
                map.put("msg","保存失败");
            }
             return map;
+    }
+
+
+    @ResponseBody
+    @RequestMapping(value = "/upload2",method = {RequestMethod.POST},produces = "application/json;charset=UTF-8")
+    public Map<String,Object> upload2(User2 user2) {
+
+
+
+
+    /*   MultipartHttpServletRequest params =((MultipartHttpServletRequest) request);
+       //获取多文件
+        List<MultipartFile> files = ((MultipartHttpServletRequest) request)
+                .getFiles("file");
+        //获取文件（遍历)
+        MultipartFile file = files.get(0);
+        //获取其他表单数据
+        String name=params.getParameter("name");
+        System.out.println("name:"+name);
+        String id=params.getParameter("id");
+        System.out.println("id:"+id);
+*/
+       /* JSONObject jsonObject = JSONObject.parseObject(a);
+
+        User user = JSONObject.toJavaObject(jsonObject,User.class);
+        user.setHead(file.getOriginalFilename());
+*/
+        //System.out.println(user.toString());
+        //MultipartFile file = user2.getFile();
+
+       /* System.out.println(request.getParameter("username"));
+        System.out.println(request.getParameter("password"));
+        System.out.println(request.getParameter("phone"));
+        System.out.println(request.getParameter("email"));
+        System.out.println(file.getOriginalFilename()+"aaa");*/
+        System.out.println(user2.toString());
+        MultipartFile file = user2.getFile();
+        System.out.println(file.getOriginalFilename()+"aaa");
+        Map<String,Object> map = new HashMap<>();
+        map.put("msg","保存成功");
+        return map;
     }
 }
